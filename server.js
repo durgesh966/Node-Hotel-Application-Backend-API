@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 3000;
 
 
 // Middleware Function
-
 app.use(logRequest);
 
 app.use(passport.initialize());
