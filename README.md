@@ -6,23 +6,35 @@ The **Node Hotel** application is a Node.js-based system developed using the Exp
 
 ### Persons
 - **Add a Person:**
-  - **Endpoint:** `POST /person`
+  - **Endpoint:** `POST - /person/signup`
   - **Description:** Adds a person to the system with details such as name, role, etc.
   - **Request Body Example:**
     ```json
     {
-      "name": "John Doe",
-      "age": 30,
+      "name": "Durgesh Bisen",
+      "age": 21,
       "work": "waiter",
-      "mobile": "123-456-7890",
-      "email": "john@example.com",
-      "address": "123 Main Street",
-      "salary": 30000
+      "mobile": "9669931360",
+      "email": "webdev.durgesh@gmail.com",
+      "address": "Khandwa Madhya Pradesh",
+      "salary": 30000,
+      "username": "durgesh9669",
+      "password": "durgesh"
+    }
+    ```
+- **Login Person:**
+  - **Endpoint:** `POST - /person/login`
+  - **Description:** Login a person to the system with details such as username, password.
+  - **Request Body Example:**
+    ```json
+    {
+      "username": "durgesh9669",
+      "password": "durgesh"
     }
     ```
 
 - **Get All Persons:**
-  - **Endpoint:** `GET /person`
+  - **Endpoint:** `GET - /person`
   - **Description:** Retrieves a list of all persons in the system.
 
 - **Get Persons by Work Type:**
@@ -37,13 +49,15 @@ The **Node Hotel** application is a Node.js-based system developed using the Exp
   - **Request Body Example:**
     ```json
     {
-      "name": "John Smith",
-      "age": 32,
-      "work": "manager",
-      "mobile": "987-654-3210",
-      "email": "john.smith@example.com",
-      "address": "456 Another Street",
-      "salary": 35000
+    "name": "Durgesh Bisen",
+    "age": 21,
+    "work": "manager",
+    "mobile": "9669931360",
+    "email": "webdev.durgesh@gmail.com",
+    "address": "Khandwa Madhya Pradesh",
+    "salary": 30000,
+    "username": "durgesh9669",
+    "password": "durgesh"
     }
     ```
 
@@ -51,6 +65,8 @@ The **Node Hotel** application is a Node.js-based system developed using the Exp
   - **Endpoint:** `DELETE /person/:id`
   - **Description:** Deletes a person from the system based on their ID.
   - **URL Parameter Example:** `/person/60c72b2f9b1e8b2f88a6e4b1`
+
+  <!-- menu started -->
 
 ### Menu Items
 - **Add a Menu Item:**
@@ -65,6 +81,16 @@ The **Node Hotel** application is a Node.js-based system developed using the Exp
       "is_drink": false,
       "ingredients": ["chicken", "spices", "vegetables"],
       "num_sales": 50
+    }
+
+    -------- Example -------
+    {
+    "name": "Spicy Chicken Curry",
+    "price": 12.99,
+    "taste": "spicy",
+    "is_drink": false,
+    "ingredients": "vegetables",
+    "num_sales": 50
     }
     ```
 
@@ -83,13 +109,13 @@ The **Node Hotel** application is a Node.js-based system developed using the Exp
   - **URL Parameter Example:** `/menu/60c72b2f9b1e8b2f88a6e4b1`
   - **Request Body Example:**
     ```json
-    {
-      "name": "Sweet Mango Lassi",
-      "price": 4.99,
-      "taste": "sweet",
-      "is_drink": true,
-      "ingredients": ["mango", "yogurt", "sugar"],
-      "num_sales": 100
+    { 
+    "name": "Spicy Chicken Curry",
+    "price": 12.99,
+    "taste": "sweet",
+    "is_drink": false,
+    "ingredients": "vegetables",
+    "num_sales": 50
     }
     ```
 
@@ -111,19 +137,9 @@ The `Person` data model represents information about staff members in the hotel.
   - `email`: String (Person's email address, unique)
   - `address`: String (Person's address)
   - `salary`: Number (Person's salary)
+  - `username`: String (Person's unique username including special symbol and numbers)
+  - `password`: String (Person create a unique password)
 
-- **Example:**
-  ```json
-  {
-    "name": "John Doe",
-    "age": 30,
-    "work": "waiter",
-    "mobile": "123-456-7890",
-    "email": "john@example.com",
-    "address": "123 Main Street",
-    "salary": 30000
-  }
-  ```
 
 ### Menu Item
 The `MenuItem` data model represents information about menu items available in the hotel.
@@ -135,18 +151,6 @@ The `MenuItem` data model represents information about menu items available in t
   - `is_drink`: Boolean (Indicates if the item is a drink, default is `false`)
   - `ingredients`: Array of Strings (List of ingredients, default is an empty array)
   - `num_sales`: Number (Number of sales for the item, default is `0`)
-
-- **Example:**
-  ```json
-  {
-    "name": "Spicy Chicken Curry",
-    "price": 12.99,
-    "taste": "spicy",
-    "is_drink": false,
-    "ingredients": ["chicken", "spices", "vegetables"],
-    "num_sales": 50
-  }
-  ```
 
 ## Usage
 
