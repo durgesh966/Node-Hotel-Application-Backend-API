@@ -70,7 +70,6 @@ router.put('/:id', async (req, res)=>{
 router.delete('/:id', async (req, res) => {
     try{
         const menuId = req.params.id; // Extract the Menu's ID from the URL parameter
-        
         // Assuming you have a MenuItem model
         const response = await MenuItem.findByIdAndRemove(menuId);
         if (!response) {

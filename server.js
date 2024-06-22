@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const db = require('./database/db');
 require('dotenv').config();
+const logRequest = require("./middleware/logRequest");
 const passport = require('./controller/auth');
 
 const bodyParser = require('body-parser'); 
@@ -10,10 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 
 // Middleware Function
-const logRequest = (req, res, next) => {
-    console.log(`[${new Date().toLocaleString()}] Request Made to : ${req.originalUrl}`);
-    next(); // Move on to the next phase
-}
+
 app.use(logRequest);
 
 app.use(passport.initialize());
